@@ -1,0 +1,9 @@
+test.cpp
+*.cbp
+*.dll
+*.depend 
+*.layout
+
+bin/
+obj/
+Main/
