@@ -32,7 +32,7 @@ void App::run()
     while(m_window.isOpen()){
 
         elapsed = clock.getElapsedTime().asSeconds();
-        //m_window.setFramerateLimit(50);
+      // m_window.setFramerateLimit(10);
         if(elapsed >= 1){clock.restart(); elapsed = 0; m_fpstxt.setString("FPS: " + std::to_string(fps_count)); fps_count = 0;}
 
         sf::Event event;

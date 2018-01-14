@@ -18,7 +18,7 @@ QuadController::QuadController(int width, int height)
     for(int x = 0; x < WIDTH; x++)
     {
     quads[y][x] = 0;
-     if(srand.nextInt(0,10) >8)
+     if(srand.nextInt(0,10) >9)
         quads[y][x] = 1;
     }
 
@@ -33,6 +33,7 @@ QuadController& QuadController::getInstance(int w,int h)
 
 void QuadController::addQuad(std::vector<sf::Vertex>& vec,int x,int y, int lengthX = 4,int lengthY = 4)
 {
+
 
     sf::Vertex bottomLeft(sf::Vector2f(x, y),sf::Color::Green);
     sf::Vertex bottomRight(sf::Vector2f(x + lengthX, y),sf::Color::Green);
@@ -65,17 +66,16 @@ void QuadController::bufferRect(){
                 }
             }else{
                 if(contigRects){
-
                     addQuad(vertices,posX,y * QUAD_SIZE,XRange);
                     contigRects = 0;
-                    XRange = 0;
+                    XRange = 4;
                 }
             }
         }
         if(contigRects != 0)
             addQuad(vertices,posX,y * QUAD_SIZE,XRange);
         contigRects = 0;
-        XRange = 0;
+        XRange = 4;
         posX = 0;
     }
 }
@@ -86,7 +86,7 @@ void QuadController::render(sf::RenderWindow& window)
     vertices.clear();
     vertices.reserve(HEIGHT * WIDTH * 4);
 
-    bufferRect();
+      bufferRect();
 
 window.draw(&vertices[0],vertices.size(),sf::Quads);
 }
